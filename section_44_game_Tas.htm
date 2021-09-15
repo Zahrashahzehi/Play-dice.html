@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME_TOS</title>
+</head>
+<body style="background: pink;">
+    <div class="massege" style="color: red;">select either Heads or Tails !</div>
+    <br>
+    <button type="button" style="margin: 2px 10px;">Heads</button>
+    <button type="button">Tails</button>
+    <script>
+        const coinArray = ["Heads", "Tails"];
+        let score = [0,0];
+    const massege = document.querySelector(".massege");
+    const buttons = document.querySelectorAll("button");
+    for(let i=0 ; i<buttons.length; i++)
+        {
+            buttons[i].addEventListener("click" , tossCoin);
+        }
+    function tossCoin(e){
+            let playerGuess = e.target.innerText
+            let computerToss = Math.floor(Math.random()*2);
+            let computerGuess = coinArray[computerToss];
+            massege.innerHTML="Computer selected : " + computerGuess;
+            let output;
+            if(playerGuess===computerGuess){
+                output = " player Win .";
+                score[0]++;
+            }
+            else{
+                output = " Computer Win . ";
+                score[1]++;
+            }
+            massege.innerHTML+=output + "<br/> player : " + score[0] + "  Computer : " + score[1];
+        }
+    </script>
+</body>
+</html>
